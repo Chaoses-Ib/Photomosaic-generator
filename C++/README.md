@@ -1,6 +1,7 @@
-# Photomosaic Generator
+# C++ Port
 
 ## Build
+[vcpkg](https://github.com/microsoft/vcpkg):
 ```cmd
 vcpkg install opencv4 boost-program-options --triplet=x64-windows-static
 ```

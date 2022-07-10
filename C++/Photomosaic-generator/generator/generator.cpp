@@ -147,6 +147,9 @@ int main(int argc, char* argv[])
     std::cout << "Timer precision: " << omp_get_wtick() << "s\n\n";
 
     cv::Mat target = cv::imread(target_path, cv::IMREAD_COLOR);
+    if (target.empty())
+        // [ WARN:0@0.001] global C:\opencv4\modules\imgcodecs\src\loadsave.cpp (239) cv::findDecoder imread_('C:\test.jpg'): can't open/read file: check file path/integrity
+        return 1;
     
     int x_step = target.cols / x_n, y_step = target.rows / y_n;
     
@@ -182,7 +185,7 @@ int main(int argc, char* argv[])
         cv::imwrite(output_path, target);
     }
     else {
-        cv::imshow("Photographic", target);
+        cv::imshow("Photomosaic", target);
         cv::waitKey(0);
         cv::destroyAllWindows();
     }
